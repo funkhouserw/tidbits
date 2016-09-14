@@ -1,4 +1,4 @@
-# Be careful with your loops!
+# Be careful with your loops
 
 ## Indexing variables are instantiated as local or global variables outside of the loop block. 
 #### Wilson Funkhouser
@@ -27,7 +27,7 @@ local scope. Even if 'i' exists in one scope, it won't interfere with a
 different scope.  Once that block is done executing, those variables reset
 to an undefined state. 
 
-This was super nice as a sometimes-lazy, more-often-incompetent developer! 
+This was super nice as a sometimes-lazy, more-often-incompetent developer. 
 You can toss variables around, but if you want to get something out of a loop or
 method, you have to explicitly declare it as belonging to a larger scope or just
 pass it around.
@@ -55,7 +55,7 @@ for (i = 0; i < 10; i++) {
 text2
 # > Uncaught ReferenceError: text2 is not defined(..)
 ```
-But uhh, notice anything else? `i` is instantiated outside of the block! In
+But uhh, notice anything else? `i` is instantiated outside of the block. In
 fact, as I wrote it, this will be global in scope. 
 
 To have both of these exist only for the execution of the loop block, we can
@@ -93,7 +93,7 @@ for(i;i < 10; i++){
 ```
 
 The same instantiation rules apply to Python, except there's no `let`
-equivalent!
+equivalent.
 
 ```
 # Python
@@ -164,7 +164,7 @@ What an anti-climactic ending. I don't necessarily like this as a design
 decision for Python, but given how function-centric it is, I can at least
 understand it and easily follow it. 
 
-If you know why this decision was made in R, please let me know! I haven't been
+If you know why this decision was made in R, please let me know. I haven't been
 able to find out why the creators of the language made this decision, especially
 since this behavior of indexing variables is not how Java or C function, as far
 as I know. 
