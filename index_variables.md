@@ -141,7 +141,7 @@ This is all also true in R and a whole slew of other languages. One example of
 weird scoping tricks has some hilarious and telling examples in R.  Read the
 whole thing
 [here](http://andrewgelman.com/2014/01/29/stupid-r-tricks-random-scope/) .
-I won't spoil it for you, but it culminates in a function that will randomly
+Spoilers: it culminates in a function that will randomly
 decide to use the globally defined variable or the locally defined variable. 
 
 ```
