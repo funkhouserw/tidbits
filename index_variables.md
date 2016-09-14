@@ -137,8 +137,26 @@ print(i)
 ```
 [source for this info and example](http://eli.thegreenplace.net/2015/the-scope-of-index-variables-in-pythons-for-loops/)
 
-This is all also true in R and a whole slew of other languages. I'm omitting
-them from these tidbits because they don't further inform discussion. 
+This is all also true in R and a whole slew of other languages. One example of
+weird scoping tricks has some hilarious and telling examples in R.  Read the
+whole thing
+[here](http://andrewgelman.com/2014/01/29/stupid-r-tricks-random-scope/) .
+I won't spoil it for you, but it culminates in a function that will randomly
+decide to use the globally defined variable or the locally defined variable. 
+
+```
+> b <- 20
+> h <- function(x) { if (rbinom(1,1,0.5)) { b <- 1000 }; return(b * x); }
+and then call it a few times
+
+> h(2)
+[1] 40
+
+> h(2)
+[1] 2000
+Whether the value of b is the local variable set to 1000 or the global value set to 20 depends on the outcome of the coin flip determined by calling rbinom(1,1,0.5)!
+```
+[source](http://andrewgelman.com/2014/01/29/stupid-r-tricks-random-scope/)
 
 ## Ok, why?! 
 
@@ -160,11 +178,30 @@ Just put it in a function. Problem solved. In Python, R, Javascript, Ruby, and p
 variables not declared as global are going to remain local to that
 block or function. 
 
+"in a function" is a bit specific. You want to use _closures_ for lexical
+scoping. 
+
+In R, this would look like:
+```
+> ff <- function(x) { g <- function(y) { return(x * y) }; return(g) }
+
+> ff(7)(9)
+[1] 63
+```
+"What's going on is that R uses the scope of a variable at the point at which the function is defined and that inner function g is not defined until the function ff is called."
+[source](http://andrewgelman.com/2014/01/29/stupid-r-tricks-random-scope/)
+
+
 What an anti-climactic ending. I don't necessarily like this as a design
 decision for Python, but given how function-centric it is, I can at least
-understand it and easily follow it. 
+understand it and easily follow it.  For R... as long as I'm aware and
+understand closures, I'm sure I'll manage. But this is going to be one hell of a
+bug to pick up on for larger/more serious projects written in R. 
 
 If you know why this decision was made in R, please let me know. I haven't been
 able to find out why the creators of the language made this decision, especially
 since this behavior of indexing variables is not how Java or C function, as far
 as I know. 
+
+[update: source documentation on scoping in R with a little bit of insight as to
+'why'](https://socserv.socsci.mcmaster.ca/jfox/Books/Companion-1E/appendix-scope.pdf)
