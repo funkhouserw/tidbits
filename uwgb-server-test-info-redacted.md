@@ -9,6 +9,8 @@ published using the built-in rstudio publish feature.
 server has rstudioserver and jupyter notebook server running on it.  That is
 all. 
 
+More information about how I set up the server can be found here: [google doc](https://docs.google.com/document/d/17K-HrdiqXprl-5p1QSVwy717C8dyqJIqYWCqeg-Hok0/edit)
+
 -------
 
 ## General Information
