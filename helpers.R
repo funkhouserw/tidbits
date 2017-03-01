@@ -53,3 +53,8 @@ g = function(...) {
   class(List) = 'lbunch'
   return(List)
 }
+
+
+resetGraph = function() {
+  par(mfrow=c(1,1))
+}
