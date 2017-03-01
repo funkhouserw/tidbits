@@ -20,12 +20,12 @@ More information about how I set up the server can be found here: [google doc](h
   - Access to ports 8787 and 8888, and 80 open
 
 ### R-Studio-Server
-  - accessed at http://uwds.horse.bike/8787
+  - accessed at http://uwds.horse.bike:8787
   - u: jeff p: m3t4l
   - Note: no ssl 
 
 ### Jupyter notebook server
-  - accessed at https://uwds.horse.bike/8888
+  - accessed at https://uwds.horse.bike:8888
   - p: m3t4l
   - Note: SSL required.  Proceed despite warning of bad ssl cert
   - Note: both python2 and python3 kernels are installed. yay. 
