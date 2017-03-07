@@ -62,7 +62,7 @@ resetGraph <- function() {
 loadOrInstall <- function(thePack) {
   print(thePack)
   if (!require(thePack,character.only=TRUE)){
-   install.packages(thePack)
+   install.packages(thePack,repos="http://cran.us.r-project.org")
    require(thePack,character.only=TRUE)
   } else {
     print("ok")
