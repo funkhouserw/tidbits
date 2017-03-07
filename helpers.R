@@ -62,7 +62,9 @@ resetGraph <- function() {
 loadOrInstall <- function(thePack) {
   print(thePack)
   if (!require(thePack,character.only=TRUE)){
-   install.packages(thePack)
+    print("ok")
+  } else {
+   install.packages(thePack,character.only=TRUE)
    require(thePack,character.only=TRUE)
   }
 }
