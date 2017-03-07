@@ -55,6 +55,14 @@ g = function(...) {
 }
 
 
-resetGraph = function() {
+resetGraph <- function() {
   par(mfrow=c(1,1))
+}
+
+loadOrInstall <- function(thePack) {
+  print(thePack)
+  if (!require(thePack)){
+   install.packages(thePack)
+   require(thePack)
+  }
 }
