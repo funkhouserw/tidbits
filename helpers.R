@@ -61,8 +61,12 @@ resetGraph <- function() {
 
 loadOrInstall <- function(thePack) {
   print(thePack)
-  if (!require(thePack)){
+  if (!require(thePack,character.only=TRUE)){
    install.packages(thePack)
-   require(thePack)
+   require(thePack,character.only=TRUE)
   }
+}
+
+load_or_install_multiple_packages <- function(thelist) {
+  lapply(thelist,loadOrInstall)
 }
