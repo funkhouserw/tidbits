@@ -69,6 +69,24 @@ loadOrInstall <- function(thePack) {
   }
 }
 
+### For constructing a lot of models based on indices instead of typing it all out
+### useful week2 of ds740 at bare minimum
+
+lm_constructor <- function(indices,response_var_index,datas) {
+  rhs <- paste(colnames(datas)[indices],collapse=" + ")
+  lhs <- paste(colnames(datas)[response_var_index]," ~ ")
+  return(paste(lhs,rhs,sep=" "))
+}
+
+lm_constructor_list <- function(models_list,response_var_index,datas) {
+  n <- length(models_list)
+  all_lms <- rep(NA,n)
+  for(i in 1:n) {
+    all_lms[i] <- lm_constructor(unlist(models_list[i]),response_var_index,datas) 
+  }
+  return(all_lms)
+}
+
 
 
 # regsubset predictor from week 3 ds740 
