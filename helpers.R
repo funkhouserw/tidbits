@@ -70,3 +70,13 @@ loadOrInstall <- function(thePack) {
 }
 
 
+
+# regsubset predictor from week 3 ds740 
+predict.regsubsets <- function(object,newdata,id,...){
+  form = as.formula(object$call[[2]])
+  mat = model.matrix(form,newdata)
+  coefi = coef(object,id=id)
+  xvars = names(coefi)
+  mat[,xvars]%*% coefi
+  
+} 
